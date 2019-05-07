@@ -1,0 +1,16 @@
+掌握Spring boot配置详解
+
+使用配置文件中的属性
+@Component
+@PropertySource("classpath:my2.properties")
+@ConfigurationProperties(prefix="my2")
+
+
+application-dev.properties
+application-test.properties
+application-prod.properties
+
+三种配置文件结合环境打包
+
+指定环境启动jar包
+java -jar xx.jar --spring.profiles.active=dev
