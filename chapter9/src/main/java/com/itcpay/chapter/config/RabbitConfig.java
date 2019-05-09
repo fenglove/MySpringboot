@@ -15,13 +15,13 @@ public class RabbitConfig {
 
     @Bean
     public Queue defaultBookQueue() {
-        // 第一个参数是队列名字，第二个参数是消息是否要持久化处理
+        // 第一个参数是队列名字，true：消息是否要持久化处理
         return new Queue(DEFAULT_BOOK_QUEUE, true);
     }
 
     @Bean
     public Queue manualBookQueue() {
-        // 第一个参数是队列名字，第二个参数是消息是否要持久化处理
+        // 第一个参数是队列名字，true：消息是否要持久化处理
         return new Queue(MANUAL_BOOK_QUEUE, true);
     }
 
