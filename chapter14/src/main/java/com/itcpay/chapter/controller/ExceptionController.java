@@ -25,4 +25,15 @@ public class ExceptionController {
         return "result:" + i;
     }
 
+    @GetMapping("/test3")
+    public String test3(String name) {
+        if (name == null) {
+            throw new NullPointerException("name 不能为空");
+        }
+        if (name.length() < 2 || name.length() > 10) {
+            throw new RuntimeException("name 长度必须在 2-10 之间");
+        }
+        return "success";
+    }
+
 }
