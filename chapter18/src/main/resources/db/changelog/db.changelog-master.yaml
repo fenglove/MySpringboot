@@ -1,0 +1,37 @@
+databaseChangeLog:
+  # 支持 yaml 格式的 SQL 语法
+  - changeSet:
+    id: 1
+    author: solofeng
+    changes:
+      - createTable:
+        tableName: person
+        columns:
+          - column:
+            name: id
+            type: int
+            autoIncrement: true
+            constraints:
+              primaryKey: true
+              nullable: false
+          - column:
+            name: first_name
+            type: varchar(255)
+            constraints:
+              nullable: false
+          - column:
+            name: last_name
+            type: varchar(255)
+            constraints:
+              nullable: false
+  # 同时也支持依赖外部SQL文件
+  - changeSet:
+    id: 2
+    author: solofeng
+    changes:
+      - sqlFile:
+        encoding: utf8
+        path: classpath:db/changelog/sqlFile/test1.sql
+
+# 官方支持三种写法：
+# http://www.liquibase.org/documentation/changes/sql_file.html
