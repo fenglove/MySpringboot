@@ -62,16 +62,12 @@ public class ChatRoomServerEndpoint {
         throwable.printStackTrace();
     }
 
-    @GetMapping("/index")
-    public String index() {
-        return "chat";
-    }
-
     @GetMapping("/chat-room/{sender}/to/{receive}")
     public void onMessage(@PathVariable("sender") String sender,
                           @PathVariable("receive") String receive,
                           String message) {
-        sendMessage(LEAVING_SESSIONS_CACHE.get(sender), "["+sender+"] -> ["+receive+"]："+ message);
+        log.info("["+sender+"] -> ["+receive+"]："+ message);
+        sendMessage(LEAVING_SESSIONS_CACHE.get(receive), "["+sender+"] -> ["+receive+"]："+ message);
     }
 
 }

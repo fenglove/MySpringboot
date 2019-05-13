@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>itcpay websocket</title>
-    <script src="jquery-3.2.1.min.js"></script>
+    <script src="/webjars/jquery/3.4.1/jquery.js"></script>
 </head>
 <body>
 
@@ -41,10 +41,10 @@
             ws.onopen = function () {
                 console.log("建立 websocket 连接...");
             };
-            ws.onmessage = function () {
+            ws.onmessage = function (event) {
                 // 服务端发送的消息
                 $('#message_content').append(event.data + '\n');
-            };
+            }
             ws.onclose = function (ev) {
                 $('#message_content').append('用户['+username+'] 已经离开聊天室！');
                 console.log("关闭 websocket 连接...");
