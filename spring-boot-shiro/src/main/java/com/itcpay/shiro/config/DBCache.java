@@ -23,9 +23,9 @@ public class DBCache {
 
     static {
         // 假设这是数据库记录
-        USERS_CACHE.put("", new User(1L, "u1", "p1", "admin", true));
-        USERS_CACHE.put("", new User(2L, "u2", "p2", "admin", false));
-        USERS_CACHE.put("", new User(3L, "u3", "p3", "test", true));
+        USERS_CACHE.put("u1", new User(1L, "u1", "p1", "admin", true));
+        USERS_CACHE.put("u2", new User(2L, "u2", "p2", "admin", false));
+        USERS_CACHE.put("u3", new User(3L, "u3", "p3", "test", true));
 
         PERMISSIONS_CACHE.put("admin", Arrays.asList("user:list", "user:add", "user:edit"));
         PERMISSIONS_CACHE.put("test", Collections.singletonList("user:list"));

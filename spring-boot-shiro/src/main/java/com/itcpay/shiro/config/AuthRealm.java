@@ -9,7 +9,7 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 
-import java.util.Optional;
+import java.util.*;
 
 /**
  * 认证领域
@@ -62,8 +62,15 @@ public class AuthRealm extends AuthorizingRealm {
         // 权限信息对象info，用来存放查出的用户的所有角色（role）及权限（permission）
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         // 用户的角色集合
-
-        return null;
+        Set<String> roles = new HashSet<>();
+        roles.add(user.getRoleName());
+        info.setRoles(roles);
+        // 用户的角色对应的所有权限，如果只使用角色定义访问权限，下面可以不要
+        // 只有角色并没有颗粒度到每一个按钮 或 是操作选项 PERMISSIONS 是可选项
+        final Map<String, Collection<String>> permissionsCache = DBCache.PERMISSIONS_CACHE;
+        final Collection<String> permissions = permissionsCache.get(user.getRoleName());
+        info.addStringPermissions(permissions);
+        return info;
     }
 
 }
